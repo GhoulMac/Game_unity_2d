@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private LayerMask jumpableGround;
 
+    [SerializeField] private AudioSource JumpSoundEffect;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(dirX * movespeed,rb.velocity.y);
         if (Input.GetButtonDown("Jump") && IsGrounded() )
         {
+            JumpSoundEffect.Play();
             rb.velocity = new Vector2(rb.velocity.x,jumpforce);
         }
 
